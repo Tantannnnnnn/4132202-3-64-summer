@@ -26,7 +26,7 @@ require('../query/conDB.php');
                 <td><?= $row['age'] ?></td>
                 <td><?= $row['sex'] ?></td>
                 <td>
-                    <button class = "btn-del" data name="<?= $row['name'] ?>">DEL</button>
+                    <button class="btn-del" data-name="<?= $row['name'] ?>">Del</button>
                 </td>
             </tr>
         <?php
@@ -37,16 +37,15 @@ require('../query/conDB.php');
 <script>
     $(".btn-del").click(function() {
         let data = $(this).data("name");
-        // alert(data);
-        $.ajax({
-            url: "./query/user_del.php",
+         //alert(data);
+         $.ajax({
+            url:"./query/user_del.php",
             method: "POST",
-            data: {
-                name: data
-            },
-            success: function() {
+            data: {name:data},
+            success:function(){
                 $("#div_content").load("./php/dt_user.php");
             }
         });
+        
     });
 </script>
